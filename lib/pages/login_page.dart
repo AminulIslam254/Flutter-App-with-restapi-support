@@ -41,12 +41,13 @@ class LoginPage extends StatelessWidget {
                       label: Text("Password"),
                     ),
                   ),
-
-                  ElevatedButton(onPressed: (){
-                    print("Clicked");
-                  }, child: Text("Click Me"))
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/home");
+                    },
+                    child: Text("Click Me"),
+                  )
                 ],
-                
               ),
             )
           ],
