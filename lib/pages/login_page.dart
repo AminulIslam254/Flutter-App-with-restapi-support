@@ -1,58 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:proj2/pages/home_page.dart';
 
 class LoginPage extends StatelessWidget {
+
   const LoginPage({super.key});
+  
 
   @override
   Widget build(BuildContext context) {
+    String name="";
+    String Password="";
     return MaterialApp(
       home: Scaffold(
-        body: Column(
-          children: [
-            Image.asset(
-              "assets/images/login1.jpg",
-              fit: BoxFit.cover,
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Text(
-              "Image Name is ...",
-              style: TextStyle(
-                fontSize: 30,
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
+          appBar: AppBar(
+            title: Text("hi"),
+            centerTitle: true,
+          ),
+          body: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
               child: Column(
                 children: [
-                  TextFormField(
+                  TextField(
                     decoration: InputDecoration(
-                      hintText: "Enter Username",
-                      label: Text("UserName"),
+                      hintText: "Enter Name",
                     ),
+                    onChanged: (value) => {name=value},
                   ),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      hintText: ("Enter Password"),
-                      label: Text("Password"),
-                    ),
+                  TextField(
+                    decoration: InputDecoration(hintText: "Enter Password"),
+                    onChanged: (value) => {Password=value},
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/home");
-                    },
-                    child: Text("Click Me"),
-                  )
+                  TextButton(onPressed: (){Navigator.pushNamed(
+                    context,
+                    "/home",
+                    arguments:[name,Password]
+                  );
+                  }, child: Text("button"),style: ButtonStyle(backgroundColor:MaterialStateProperty.all(Colors.amber.shade400)),)
                 ],
-              ),
-            )
-          ],
-        ),
-      ),
+              ))),
     );
   }
 }
